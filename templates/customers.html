@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Customer Grid | MALL AI</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="sidebar">
+        <div class="brand">🛍️ MALL AI</div>
+        <nav>
+            <a href="/dashboard" class="nav-link"><i class="fas fa-chart-line"></i> Dashboard</a>
+            <a href="/customers" class="nav-link active"><i class="fas fa-users"></i> Customer Grid</a>
+            <a href="/reports" class="nav-link"><i class="fas fa-file-invoice-dollar"></i> Reports</a>
+        </nav>
+    </div>
+
+    <div class="main-content">
+        <h1>Customer Neural Grid</h1>
+        <div class="glass-card table-wrapper">
+            <table class="grid-table">
+                <thead>
+                    <tr>
+                        <th>UID</th>
+                        <th>Demographics</th>
+                        <th>Annual Income</th>
+                        <th>Spending Score</th>
+                        <th>Segment Tag</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for row in data %}
+                    <tr>
+                        <td class="id-cell">#{{ row.id }}</td>
+                        <td>Age: {{ row.age }}</td>
+                        <td><b style="color:white;">${{ row.income }}k</b></td>
+                        <td>
+                            <div class="bar-container">
+                                <div class="bar-fill" style="width: {{ row.score }}%; background: var(--primary);"></div>
+                                <span class="bar-val">{{ row.score }}</span>
+                            </div>
+                        </td>
+                        <td>
+                            <span class="segment-tag" style="border: 1px solid {{ row.color }}; color: {{ row.color }};">
+                                {{ row.segment }}
+                            </span>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>

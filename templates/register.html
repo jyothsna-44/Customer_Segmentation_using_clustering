@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Register | AI Segment Pro</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/auth_style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="auth-page">
+        <div class="auth-branding">
+            <h1>JOIN THE <span style="color: var(--primary);">FUTURE</span></h1>
+            <p>Create an account to start transforming raw retail data into actionable business intelligence.</p>
+            <ul class="feature-list">
+                <li><i class="fas fa-chart-line"></i> Industry Standard ML Lifecycle</li>
+                <li><i class="fas fa-database"></i> High Performance Excel Integration</li>
+                <li><i class="fas fa-user-shield"></i> Advanced User Authentication</li>
+            </ul>
+        </div>
+
+        <div class="auth-form-container">
+            <div class="auth-card">
+                <h2>Create Account</h2>
+                <p>Register now to access the AI dashboard.</p>
+
+                <form method="POST">
+                    <div class="input-group">
+                        <i class="fas fa-user-plus"></i>
+                        <input type="text" name="username" placeholder="Choose Username" required>
+                    </div>
+                    <div class="input-group">
+                        <i class="fas fa-key"></i>
+                        <input type="password" name="password" placeholder="Create Password" required>
+                    </div>
+                    <button type="submit" class="btn-submit">REGISTER NOW</button>
+                </form>
+                <p style="margin-top: 25px; text-align: center;">
+                    Already registered? <a href="/login" style="color: var(--primary); text-decoration: none; font-weight: 600;">Log In</a>
+                </p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

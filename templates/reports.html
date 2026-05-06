@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Reports | Mall AI Analytics</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="sidebar">
+        <div class="brand">🛍️ MALL AI</div>
+        <nav>
+            <a href="/dashboard" class="nav-link"><i class="fas fa-chart-line"></i> Dashboard</a>
+            <a href="/customers" class="nav-link"><i class="fas fa-users"></i> Customer Grid</a>
+            <a href="/reports" class="nav-link active"><i class="fas fa-file-invoice-dollar"></i> Reports</a>
+        </nav>
+    </div>
+
+    <div class="main-content">
+        <h1>Market Intelligence Summary</h1>
+
+        <div class="report-stats-grid">
+            <div class="report-card blue">
+                <i class="fas fa-wallet"></i>
+                <div><label>Avg Income</label><h2>${{ stats.avg_inc }}k</h2></div>
+            </div>
+            <div class="report-card purple">
+                <i class="fas fa-chart-pie"></i>
+                <div><label>Avg Score</label><h2>{{ stats.avg_spn }}</h2></div>
+            </div>
+            <div class="report-card green">
+                <i class="fas fa-users"></i>
+                <div><label>Total Population</label><h2>3000+</h2></div>
+            </div>
+        </div>
+
+        <div class="charts-container">
+            <!-- Adjusted sizing via CSS class "chart-box" -->
+            <div class="glass-card chart-box">
+                <h3><i class="fas fa-circle-notch"></i> Market Share (%)</h3>
+                <div class="canvas-wrapper">
+                    <canvas id="pieChart"></canvas>
+                </div>
+            </div>
+            <div class="glass-card chart-box">
+                <h3><i class="fas fa-chart-column"></i> Segment Volume</h3>
+                <div class="canvas-wrapper">
+                    <canvas id="barChart"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <div class="glass-card summary-card">
+            <h3><i class="fas fa-robot"></i> AI Executive Summary</h3>
+            <p>Analysis of customers shows an income range between <strong>${{ stats.min_inc }}k</strong> and <strong>${{ stats.max_inc }}k</strong>. The market is currently optimized for multi-tier engagement strategies based on a balanced spending profile.</p>
+        </div>
+    </div>
+
+    <script>
+        const configData = {
+            labels: {{ labels|safe }},
+            datasets: [{
+                data: {{ values|safe }},
+                backgroundColor: {{ colors|safe }},
+                borderColor: 'rgba(255,255,255,0.1)',
+                borderWidth: 2
+            }]
+        };
+
+        // Global Chart Defaults for smaller size
+        Chart.defaults.font.size = 11;
+        Chart.defaults.color = '#94a3b8';
+
+        new Chart(document.getElementById('pieChart'), {
+            type: 'doughnut', 
+            data: configData,
+            options: { 
+                maintainAspectRatio: false,
+                plugins: { 
+                    legend: { position: 'bottom', labels: { padding: 20, usePointStyle: true } } 
+                }, 
+                cutout: '70%' 
+            }
+        });
+
+        new Chart(document.getElementById('barChart'), {
+            type: 'bar', 
+            data: configData,
+            options: { 
+                maintainAspectRatio: false,
+                scales: { 
+                    y: { ticks: { color: '#94a3b8' }, grid: { color: 'rgba(255,255,255,0.05)' } }, 
+                    x: { ticks: { color: '#94a3b8' }, grid: { display: false } } 
+                }, 
+                plugins: { legend: { display: false } } 
+            }
+        });
+    </script>
+</body>
+</html>

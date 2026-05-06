@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login | AI Segment Pro</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/auth_style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="auth-page">
+        <!-- Brand Side -->
+        <div class="auth-branding">
+            <h1>MALL AI <span style="color: var(--primary);">PRO</span></h1>
+            <p>Experience the next generation of customer analytics with our advanced K-Means clustering engine.</p>
+            <ul class="feature-list">
+                <li><i class="fas fa-check-circle"></i> Interactive 3D Segment Visualizations</li>
+                <li><i class="fas fa-check-circle"></i> Real-time Business Strategy Insights</li>
+                <li><i class="fas fa-check-circle"></i> Secure Data Clustering Management</li>
+            </ul>
+        </div>
+
+        <!-- Form Side -->
+        <div class="auth-form-container">
+            <div class="auth-card">
+                <h2>Sign In</h2>
+                <p>Welcome back! Please enter your details.</p>
+
+                {% with messages = get_flashed_messages() %}
+                  {% if messages %}
+                    {% for message in messages %}
+                      <div class="alert"><i class="fas fa-info-circle"></i> {{ message }}</div>
+                    {% endfor %}
+                  {% endif %}
+                {% endwith %}
+
+                <form method="POST">
+                    <div class="input-group">
+                        <i class="fas fa-user"></i>
+                        <input type="text" name="username" placeholder="Username" required>
+                    </div>
+                    <div class="input-group">
+                        <i class="fas fa-lock"></i>
+                        <input type="password" name="password" placeholder="Password" required>
+                    </div>
+                    <button type="submit" class="btn-submit">LOGIN TO DASHBOARD</button>
+                </form>
+                <p style="margin-top: 25px; text-align: center;">
+                    New member? <a href="/register" style="color: var(--primary); text-decoration: none; font-weight: 600;">Create account</a>
+                </p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
