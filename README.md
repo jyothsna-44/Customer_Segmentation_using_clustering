@@ -124,9 +124,18 @@ python app.py
 # Screenshots
 # output 1
 <img width="1908" height="909" alt="Screenshot 2026-04-29 142757" src="https://github.com/user-attachments/assets/f9043355-78a4-4759-96b1-a6e505e8db6b" />
+
 # output 2
 <img width="1906" height="915" alt="Screenshot 2026-05-03 141939" src="https://github.com/user-attachments/assets/8105252c-dc52-4636-82a7-7b3a51bd363d" />
+
 # output 3
+<img width="1886" height="911" alt="Screenshot 2026-04-29 142818" src="https://github.com/user-attachments/assets/8e80cdc7-158e-493c-b843-a660c5803c51" />
+
+# output 4
+<img width="1848" height="885" alt="Screenshot 2026-05-03 140826" src="https://github.com/user-attachments/assets/5e6bc796-6c52-4c2a-be97-379c4eea2ce1" />
+
+# output 5
+<img width="1889" height="899" alt="Screenshot 2026-05-03 140835" src="https://github.com/user-attachments/assets/3f1f7ca5-66cf-4ff8-8c75-792609a87b60" />
 
 # 📈 Future Enhancements
 
